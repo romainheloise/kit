@@ -15,8 +15,11 @@ import { fromEvent } from 'rxjs';
 })
 export class RHoldButtonComponent implements OnInit {
   @ViewChild('holdButtonWrapper') holdButtonWrapper: any;
-  @Input() label: string = 'Click';
-  @Input() holdLabel: string = 'Hold to confirm';
+  @Input() labels = {
+    REGULAR: 'Click',
+    HOLD: 'Hold to confirm',
+    CONFIRMED: 'Confirmed',
+  };
   @Input() confirmationTime: number = 1000;
   @Input() transition: number = 1;
   @Output() onConfirm: EventEmitter<boolean> = new EventEmitter();
@@ -30,6 +33,7 @@ export class RHoldButtonComponent implements OnInit {
   timeOnMouseDown: number = 0;
   percentage = 0;
   elapsedTime = 0;
+  state: 'REGULAR' | 'CONFIRMED' | 'HOLD' = 'REGULAR';
 
   ngOnInit(): void {}
 
@@ -46,7 +50,7 @@ export class RHoldButtonComponent implements OnInit {
     }
 
     fromEvent(this.button, 'mousedown').subscribe(() => {
-      this.holding = true;
+      this.state = 'HOLD';
       this.timeOnMouseDown = Date.now();
       this.animationId = requestAnimationFrame(
         this.progressAnimation.bind(this)
@@ -55,6 +59,7 @@ export class RHoldButtonComponent implements OnInit {
 
     fromEvent(this.button, 'mouseup').subscribe(() => {
       this.percentage = 0;
+      this.state = 'REGULAR';
       this.cancelAnimation();
     });
   }
@@ -67,6 +72,7 @@ export class RHoldButtonComponent implements OnInit {
   }
 
   confirmed() {
+    this.state = 'CONFIRMED';
     this.onConfirm.emit(true);
     this.cancelAnimation();
   }
