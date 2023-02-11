@@ -1,0 +1,31 @@
+.hold-button {
+  background-color: grey;
+  width: 200px;
+  height: 30px;
+  display: flex;
+  align-items: flex-start;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+  position: relative;
+
+  .progress-bar {
+    background-color: red;
+    border-radius: 5px;
+    text-align: center;
+    height: fill-available;
+  }
+
+  .label {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

@@ -1,1 +1,4 @@
-HELLO
+<div #holdButtonWrapper class="hold-button">
+  <div class="label">{{holding ? holdLabel : label}}</div>
+  <div class="progress-bar" [ngStyle]="{width : percentage + '%' }"></div>
+</div>
