@@ -16,6 +16,11 @@
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
+    "paths": {
+      "r-hold-button": [
+        "dist/r-hold-button"
+      ]
+    },
     "target": "es2020",
     "module": "es2020",
     "lib": [

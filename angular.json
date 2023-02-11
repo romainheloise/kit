@@ -3,5 +3,39 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
+    "r-hold-button": {
+      "projectType": "library",
+      "root": "projects/r-hold-button",
+      "sourceRoot": "projects/r-hold-button/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/r-hold-button/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/r-hold-button/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/r-hold-button/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/r-hold-button/src/test.ts",
+            "tsConfig": "projects/r-hold-button/tsconfig.spec.json",
+            "karmaConfig": "projects/r-hold-button/karma.conf.js"
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "analytics": false
   }
 }
