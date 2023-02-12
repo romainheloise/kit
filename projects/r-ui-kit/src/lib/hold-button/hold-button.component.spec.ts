@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RHoldButtonComponent } from './r-hold-button.component';
+import { RHoldButtonComponent } from './hold-button.component';
 
 describe('RHoldButtonComponent', () => {
   let component: RHoldButtonComponent;

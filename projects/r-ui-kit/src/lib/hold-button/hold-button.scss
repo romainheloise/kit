@@ -19,6 +19,7 @@
   }
 
   .label {
+    background-color: white;
     position: absolute;
     top: 0;
     bottom: 0;
@@ -29,6 +30,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    height: fit-content;
+    border-radius: 5px;
   }
 
   &:hover {

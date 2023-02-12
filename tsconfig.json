@@ -17,8 +17,8 @@
     "moduleResolution": "node",
     "importHelpers": true,
     "paths": {
-      "r-hold-button": [
-        "dist/r-hold-button"
+      "r-ui-kit": [
+        "dist/r-ui-kit"
       ]
     },
     "target": "es2020",

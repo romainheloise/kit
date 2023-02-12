@@ -9,11 +9,11 @@ import {
 import { fromEvent } from 'rxjs';
 
 @Component({
-  selector: 'r-hold-button',
-  templateUrl: './r-hold-button.html',
-  styleUrls: ['./r-hold-button.scss'],
+  selector: 'hold-button',
+  templateUrl: './hold-button.html',
+  styleUrls: ['./hold-button.scss'],
 })
-export class RHoldButtonComponent implements OnInit {
+export class HoldButtonComponent implements OnInit {
   @ViewChild('holdButtonWrapper') holdButtonWrapper: any;
   @Input() labels = {
     REGULAR: 'Click',
