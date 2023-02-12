@@ -15,12 +15,17 @@ import { fromEvent } from 'rxjs';
 })
 export class HoldButtonComponent implements OnInit {
   @ViewChild('holdButtonWrapper') holdButtonWrapper: any;
+  @Input() style = {
+    label: {},
+    progressBar: {},
+    wrapper: {},
+  };
   @Input() labels = {
     REGULAR: 'Click',
     HOLD: 'Hold to confirm',
     CONFIRMED: 'Confirmed',
   };
-  @Input() confirmationTime: number = 1000;
+  @Input() confirmationTime: number = 500;
   @Input() transition: number = 1;
   @Output() onConfirm: EventEmitter<boolean> = new EventEmitter();
 
@@ -68,7 +73,6 @@ export class HoldButtonComponent implements OnInit {
     this.progressBar.style.transition = this.transition + 's';
     cancelAnimationFrame(this.animationId);
     this.holding = false;
-    this.progressBar.style.padding = '0';
   }
 
   confirmed() {
@@ -79,17 +83,16 @@ export class HoldButtonComponent implements OnInit {
 
   progressAnimation() {
     this.progressBar.style.transition = 'none';
-    this.progressBar.style.padding = '10px';
 
     const progressionTime = Date.now();
     this.elapsedTime = progressionTime - this.timeOnMouseDown;
-    this.percentage = Math.round(
-      (100 * this.elapsedTime) / this.confirmationTime
-    );
     if (this.percentage > 100) {
       this.confirmed();
       return;
     }
+    this.percentage = Math.round(
+      (100 * this.elapsedTime) / this.confirmationTime
+    );
     this.animationId = requestAnimationFrame(this.progressAnimation.bind(this));
   }
 }
